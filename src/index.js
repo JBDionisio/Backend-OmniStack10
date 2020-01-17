@@ -9,6 +9,7 @@ app.use(express.json()); //Setando json como padrão para requisições
 mongoose.connect('mongodb+srv://joaodionisio:week10@cluster0-whnmd.mongodb.net/week10?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 //Query params => url?parametro=valor => request.query
