@@ -65,7 +65,14 @@ module.exports = {
     return response.json({ error: "Desenvolvedor não cadastrado" });
   },
 
-  async destroy() {
-    //TODO: tomorrow
+  async destroy(request, response) {
+    const { github_username } = request.body;
+  
+    let dev = await Dev.findOne({ github_username });
+    if (dev) {
+      return response.json(await Dev.deleteOne(dev));
+    }
+
+    return response.json({ error: "Desenvolvedor não cadastrado" });
   },
 }
